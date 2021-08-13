@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'ProyectoPapeleriaPrueba.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'datapsql',
+        'NAME': 'papeleriaprub',
         'USER': 'root',
         'PASSWORD': '1197',
         'HOST': 'localhost',
