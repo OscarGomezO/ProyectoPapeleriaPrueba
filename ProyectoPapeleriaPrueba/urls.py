@@ -13,9 +13,11 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from erp.views import myfirstview, mysecondview
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include   #include incluye las urls del archivo urls de la App(erp)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('prueba/', include('erp.urls')),   # First URL Basic view/url
 ]
