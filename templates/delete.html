@@ -6,7 +6,7 @@
         <div class="card card-default">
             <div class="card-header">
                 <h3 class="card-title">
-                    <i class="fas fa-plus"></i>
+                    <i class="fas fa-trash"></i>
                     {{ title }}
                 </h3>
             </div>
@@ -43,5 +43,32 @@
             </div>
         </div>
     </form>
+    <script>
+        $('form').on('submit', function(e){
+            e.preventDefault();
+            var parameters = $(this).serializeArray();  //Obtiene todos los datos del diccionario
+            //console.log(parameters);
+            $.ajax({
+                url: window.location.pathname,  //Obtiene la url actual con la que se esta trabajando
+                type: 'POST',
+                //data: {id: 1},
+                data: parameters,
+                datatype: 'json'
+            }).done(function (data) {
+                console.log(data);
+                if (!data.hasOwnProperty('error')) {
+                    location.href = '{{ list_url }}';
+                return false;
+                }
+                message_error(data.error);
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+                alert(textStatus+': '+errorThrown);
+                //alert("error");
+            }).always(function (data) {
+                
+            });
+        }); 
+        
+    </script>
 
 {% endblock %} 
