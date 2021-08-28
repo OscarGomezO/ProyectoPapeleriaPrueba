@@ -16,6 +16,7 @@ Including another URLconf
 
 from django.contrib import admin
 #from erp.views.category.views import myfirstview, mysecondview
+from erp.views_Deleted import myfirstview
 from django.urls import path, include   #include incluye las urls del archivo urls de la App(erp)
 
 urlpatterns = [

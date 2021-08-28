@@ -16,8 +16,10 @@
         <td>{{ c.name }}</td>
         <!-- BUTTONS -->
         <td>
-            <button type="button" class="btn btn-primary btn-xs"><i class="fas fa-edit"></i></button>
-            <button type="button" class="btn btn-danger btn-xs"><i class="fas fa-trash-alt"></i></button>
+            <a href="{% url 'erp:category_update' c.id %}" class="btn btn-primary btn-xs">
+                <i class="fas fa-edit"></i></a>  <!-- Para editar -->
+            <a href="{% url 'erp:category_delete' c.id %}" class="btn btn-danger btn-xs">
+                <i class="fas fa-trash-alt"></i></button>
         </td>
     </tr>
     {% endfor %}

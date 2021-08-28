@@ -2,6 +2,7 @@ from django.db import models
 from datetime import datetime
 from erp.choices import gender_choices
 #from core.erp.choices import gender_choices
+from django.forms import model_to_dict   #Para manejo dinamico de muchos datos en toJSON
 
 # Create your models here.
 """
@@ -43,10 +44,17 @@ class Employee(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=150, verbose_name='Nombre', unique=True)
+    desc = models.CharField(max_length=500, null=True, blank=True, verbose_name='Descripción')
 
     def __str__(self):
         #return 'Nombre: {}'.format(self.name)
-        return "Nro:{} / Nombre: {}".format(self.id, self.name)
+        #return "Nro:{} / Nombre: {}".format(self.id, self.name)
+        return self.name
+
+    def toJSON(self):
+        #item = {'id': self.id, 'name': self.name}
+        item = model_to_dict(self)
+        return item
 
     class Meta:
         verbose_name = 'Categoria'
